@@ -15,6 +15,16 @@ abstract class _$AppRouter extends RootStackRouter {
 
   @override
   final Map<String, PageFactory> pagesMap = {
+    GameRoute.name: (routeData) {
+      final args = routeData.argsAs<GameRouteArgs>();
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: GameScreen(
+          key: args.key,
+          level: args.level,
+        ),
+      );
+    },
     HomeRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -27,6 +37,16 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const LevelsScreen(),
       );
     },
+    PauseRoute.name: (routeData) {
+      final args = routeData.argsAs<PauseRouteArgs>();
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: PauseScreen(
+          key: args.key,
+          level: args.level,
+        ),
+      );
+    },
     SettingsRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -34,6 +54,43 @@ abstract class _$AppRouter extends RootStackRouter {
       );
     },
   };
+}
+
+/// generated route for
+/// [GameScreen]
+class GameRoute extends PageRouteInfo<GameRouteArgs> {
+  GameRoute({
+    Key? key,
+    required LevelModel level,
+    List<PageRouteInfo>? children,
+  }) : super(
+          GameRoute.name,
+          args: GameRouteArgs(
+            key: key,
+            level: level,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'GameRoute';
+
+  static const PageInfo<GameRouteArgs> page = PageInfo<GameRouteArgs>(name);
+}
+
+class GameRouteArgs {
+  const GameRouteArgs({
+    this.key,
+    required this.level,
+  });
+
+  final Key? key;
+
+  final LevelModel level;
+
+  @override
+  String toString() {
+    return 'GameRouteArgs{key: $key, level: $level}';
+  }
 }
 
 /// generated route for
@@ -62,6 +119,43 @@ class LevelsRoute extends PageRouteInfo<void> {
   static const String name = 'LevelsRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [PauseScreen]
+class PauseRoute extends PageRouteInfo<PauseRouteArgs> {
+  PauseRoute({
+    Key? key,
+    required LevelModel level,
+    List<PageRouteInfo>? children,
+  }) : super(
+          PauseRoute.name,
+          args: PauseRouteArgs(
+            key: key,
+            level: level,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'PauseRoute';
+
+  static const PageInfo<PauseRouteArgs> page = PageInfo<PauseRouteArgs>(name);
+}
+
+class PauseRouteArgs {
+  const PauseRouteArgs({
+    this.key,
+    required this.level,
+  });
+
+  final Key? key;
+
+  final LevelModel level;
+
+  @override
+  String toString() {
+    return 'PauseRouteArgs{key: $key, level: $level}';
+  }
 }
 
 /// generated route for

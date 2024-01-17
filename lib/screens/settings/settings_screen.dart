@@ -1,4 +1,3 @@
-import 'package:auto_route/annotations.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -26,7 +25,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
             children: [
               Center(
                 child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
                       'Settings',
@@ -36,6 +35,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                         fontWeight: FontWeight.w900,
                       ),
                     ),
+                    SizedBox(height: MediaQuery.of(context).size.height * 0.2),
                     Column(
                       children: [
                         ActionButtonWidget(

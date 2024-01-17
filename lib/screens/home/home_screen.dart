@@ -1,8 +1,8 @@
-import 'package:auto_route/annotations.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:space_bombs_app/repository/levels_repository.dart';
 import 'package:space_bombs_app/router/router.dart';
 import 'package:space_bombs_app/theme/colors.dart';
 import 'package:space_bombs_app/widgets/action_button_widget.dart';
@@ -39,7 +39,9 @@ class _HomeScreenState extends State<HomeScreen> {
                         text: 'Start game',
                         color: AppColors.blue,
                         borderRadius: 20,
-                        onTap: () {},
+                        onTap: () {
+                          context.router.push(GameRoute(level: levelsRepository[0]));
+                        },
                       ),
                       SizedBox(height: 10),
                       ActionButtonWidget(
@@ -56,7 +58,8 @@ class _HomeScreenState extends State<HomeScreen> {
                         color: AppColors.blue,
                         borderRadius: 20,
                         onTap: () {
-                          SystemChannels.platform.invokeMethod<void>('SystemNavigator.pop');
+                          SystemChannels.platform
+                              .invokeMethod<void>('SystemNavigator.pop');
                         },
                       ),
                     ],
@@ -73,14 +76,16 @@ class _HomeScreenState extends State<HomeScreen> {
                     children: [
                       GestureDetector(
                         onTap: () {},
-                        child: SvgPicture.asset('assets/images/elements/sound.svg'),
+                        child: SvgPicture.asset(
+                            'assets/images/elements/sound.svg'),
                       ),
                       SizedBox(width: 15),
                       GestureDetector(
                         onTap: () {
                           context.router.push(SettingsRoute());
                         },
-                        child: SvgPicture.asset('assets/images/elements/settings.svg'),
+                        child: SvgPicture.asset(
+                            'assets/images/elements/settings.svg'),
                       ),
                     ],
                   ),
